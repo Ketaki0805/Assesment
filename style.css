@@ -1,0 +1,324 @@
+/* CSS Reset */
+body, header, nav, main, footer, h1, h2, p, ul, li, img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*Body Styling */
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #00bcd4;
+    padding-bottom: 10px;
+}
+
+header img {
+    max-width: 150px;
+    display: block;
+}
+
+nav li {
+    display: inline-block;
+    font-size: 1.5em;
+    font-family: Verdana, Arial sans-serif;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+nav li a{
+    display: block;
+    color: #2000d4;
+    text-align: center;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #e0faf3;
+    border-radius: 5px;
+}
+
+/* Section Styling */
+section {
+    margin: 40px 0;
+}
+
+h1, h2 {
+    color: #0400d4;
+    margin-bottom: 10px;
+}
+
+/* Center Images */
+img {
+    display: block;
+    margin: 15px auto;
+    max-width: 100%;
+}
+
+/* Team Member Cards */
+.member {
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.member img {
+    border-radius: 9px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-color: 2px solid #0043d4;
+    font-size: 1.0em;
+    color: #7d7c7c;
+    background-color: #effae0;
+}
+
+footer a {
+    color: #5c00d4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Side-by-side image layout */
+.image-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.image-row img {
+    width: 47%;
+    height: auto;
+    border-radius: 9px;
+}
+
+
+/* ========================================
+   TABLET RESPONSIVE (768px - 1024px)
+   ======================================== */
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: 600px;
+        padding: 35px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .main-container {
+        padding: 15px;
+    }
+}
+
+/* ========================================
+   MOBILE RESPONSIVE (up to 768px)
+   ======================================== */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Hamburger Button - Mobile */
+    .hamburger-btn {
+        width: 50px;
+        height: 50px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .hamburger-btn span {
+        width: 25px;
+        height: 2.5px;
+    }
+
+    /* Menu Dropdown - Mobile */
+    .menu-dropdown {
+        top: 75px;
+        right: 15px;
+        min-width: 180px;
+    }
+
+    .menu-dropdown a {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    /* Container - Mobile */
+    .container {
+        padding: 25px 20px;
+        margin: 70px auto 0;
+        max-width: 100%;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    input, textarea, select {
+        padding: 10px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    textarea {
+        min-height: 80px;
+    }
+
+    button[type="button"] {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .success-message {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   SMALL MOBILE (up to 480px)
+   ======================================== */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .hamburger-btn {
+        width: 45px;
+        height: 45px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .hamburger-btn span {
+        width: 22px;
+    }
+
+    .menu-dropdown {
+        top: 65px;
+        right: 10px;
+        min-width: 160px;
+    }
+
+    .menu-dropdown a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 20px 15px;
+        margin: 60px 5px 0;
+        border-radius: 8px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input, textarea, select {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    button[type="button"] {
+        padding: 11px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   LANDSCAPE MODE FOR MOBILE
+   ======================================== */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .container {
+        margin: 80px auto 20px;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    input, textarea, select {
+        padding: 8px;
+    }
+
+    textarea {
+        min-height: 60px;
+    }
+
+    button[type="button"] {
+        padding: 10px;
+    }
+}
+
+/* ========================================
+   TOUCH DEVICE IMPROVEMENTS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets for mobile */
+    .hamburger-btn {
+        min-width: 50px;
+        min-height: 50px;
+    }
+
+    .menu-dropdown a {
+        min-height: 44px; /* Apple's recommended touch target */
+        display: flex;
+        align-items: center;
+    }
+
+    button[type="button"] {
+        min-height: 48px;
+    }
+}
+
+
+  

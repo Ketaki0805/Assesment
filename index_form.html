@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 24px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn::before {
+            content: '←';
+            font-size: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.invalid input,
+        .form-group.invalid textarea,
+        .form-group.invalid select {
+            border-color: #e74c3c;
+        }
+
+        .form-group.invalid .error {
+            display: block;
+        }
+
+        button[type="button"] {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button[type="button"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type="button"]:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <button class="back-btn" onclick="goBack()">Back</button>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <span class="error">Please enter your name</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="your.email@example.com">
+                <span class="error">Please enter a valid email</span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+                <span class="error">Please enter a valid phone number</span>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject">
+                    <option value="">Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error">Please select a subject</span>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" placeholder="Type your message here..."></textarea>
+                <span class="error">Please enter a message</span>
+            </div>
+
+            <button type="button" id="submitBtn">Send Message</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Thank you! Your message has been sent successfully.
+        </div>
+    </div>
+
+    <script>
+        // Back button function
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        // Submit button event
+        document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+
+        // Add real-time validation on input
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+        });
+
+        function handleSubmit() {
+            let isValid = true;
+            
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            
+            clearErrors();
+            
+            // Validate name
+            if (name.value.trim() === '') {
+                showError(name);
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                showError(email);
+                isValid = false;
+            }
+            
+            // Validate phone (optional field)
+            if (phone.value.trim() !== '') {
+                const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+                if (!phoneRegex.test(phone.value.trim()) || phone.value.trim().length < 10) {
+                    showError(phone);
+                    isValid = false;
+                }
+            }
+            
+            // Validate subject
+            if (subject.value === '') {
+                showError(subject);
+                isValid = false;
+            }
+            
+            // Validate message
+            if (message.value.trim() === '') {
+                showError(message);
+                isValid = false;
+            }
+            
+            // If form is valid, process the data
+            if (isValid) {
+                const formData = {
+                    name: name.value.trim(),
+                    email: email.value.trim(),
+                    phone: phone.value.trim(),
+                    subject: subject.value,
+                    message: message.value.trim(),
+                    timestamp: new Date().toISOString()
+                };
+                
+                console.log('Form Data:', formData);
+                
+                // Show success message
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Redirect back to home page after 3 seconds
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 3000);
+            }
+        }
+
+        function validateField(element) {
+            const value = element.value.trim();
+            const id = element.id;
+            
+            switch(id) {
+                case 'name':
+                    if (value === '') {
+                        showError(element);
+                    } else {
+                        clearFieldError(element);
+                    }
+                    break;
+                case 'email':
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        showError(element);
+                    } else {
+                        clearFieldError(element);
+                    }
+                    break;
+                case 'subject':
+                    if (value === '') {
+                        showError(element);
+                    } else {
+                        clearFieldError(element);
+                    }
+                    break;
+                case 'message':
+                    if (value === '') {
+                        showError(element);
+                    } else {
+                        clearFieldError(element);
+                    }
+                    break;
+            }
+        }
+
+        function showError(element) {
+            element.parentElement.classList.add('invalid');
+        }
+
+        function clearFieldError(element) {
+            element.parentElement.classList.remove('invalid');
+        }
+
+        function clearErrors() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                group.classList.remove('invalid');
+            });
+        }
+    </script>
+</body>
+</html>
